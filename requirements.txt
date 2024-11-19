@@ -5,3 +5,4 @@ pypandoc==1.14         # Already compatible with Python 3.9
 pillow==8.4.0          # Pillow 8.x is compatible with Python 3.9
 python-docx==0.8.11    # Use a compatible version
 reportlab==3.5.67      # ReportLab 3.5.x is compatible with Python 3.9
+openpyxl==3.1.5
