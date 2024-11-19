@@ -10,7 +10,7 @@
       { "src": "/(.*)", "dest": "dapi.py" }
     ],
     "env": {
-      "PYTHON_VERSION": "3.10"
+      "PYTHON_VERSION": "3.9"
     }
   }
   
