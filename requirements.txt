@@ -1,6 +1,5 @@
 fastapi==0.115.4
-libtool
-python-libpcap
+
 PyMuPDF==1.24.13
 pydantic==2.9.2
 pypandoc==1.14

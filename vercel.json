@@ -4,11 +4,13 @@
       {
         "src": "dapi.py",
         "use": "@vercel/python"
-       
       }
     ],
     "routes": [
       { "src": "/(.*)", "dest": "dapi.py" }
-    ]
+    ],
+    "env": {
+      "PYTHON_VERSION": "3.10"
+    }
   }
   
