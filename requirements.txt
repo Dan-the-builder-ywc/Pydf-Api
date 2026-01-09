@@ -3,7 +3,15 @@ PyMuPDF==1.18.19       # Compatible version for PyMuPDF (supports Python 3.9)
 pydantic==1.8.2        # Older but stable version for Python 3.9
 pypandoc==1.14         # Already compatible with Python 3.9
 pillow==8.4.0          # Pillow 8.x is compatible with Python 3.9
+numpy==1.21.6          # NumPy for image analysis
 python-docx==0.8.11    # Use a compatible version
 reportlab==3.5.67      # ReportLab 3.5.x is compatible with Python 3.9
 openpyxl==3.1.5
 python-multipart==0.0.5
+python-magic==0.4.27   # For file type validation using magic numbers
+slowapi==0.1.9         # For rate limiting
+python-dotenv==0.19.2  # For environment variable management
+uvicorn==0.15.0        # ASGI server
+pytest==7.1.2          # Testing framework
+hypothesis==6.54.0     # Property-based testing
+pdf2docx==0.5.6        # For PDF to Word conversion
