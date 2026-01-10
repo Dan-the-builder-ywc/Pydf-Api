@@ -13,7 +13,7 @@ from googleapiclient.discovery import build
 # Same sheet as mpy3juice
 SHEET_ID = "16vzRuCGHzgRor2lmhRHyEbn8KFLdDnw1hbaF4xeTELo"
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
-SERVICE_ACCOUNT_FILE = 'mpy3juice/service-account.json'  # Reuse existing service account
+SERVICE_ACCOUNT_FILE = '/home/macproa2338/mpy3juice/service-account.json'  # Reuse existing service account
 
 def get_tunnel_url():
     """Extract tunnel URL from cloudflared-pdf logs"""
