@@ -8,7 +8,7 @@ from fastapi.responses import FileResponse, StreamingResponse
 import fitz
 import os
 from functions import *
-from functions import is_scanned_pdf, pdf_to_word
+from functions import is_scanned_pdf  # pdf_to_word removed to reduce deployment size
 from pydantic import BaseModel
 from typing import List, Tuple, Optional
 import json
