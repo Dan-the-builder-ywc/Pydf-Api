@@ -789,49 +789,51 @@ async def add_watermark_endpoint(
 
 
 @app.post("/pdf_to_word")
-@limiter.limit(f"{config.RATE_LIMIT_PER_MINUTE}/minute")
-async def pdf_to_word_endpoint(request: Request, file: UploadFile = File(...)):
-    """
-    Convert PDF to Word (DOCX) format.
-    Preserves text formatting, images, and table structures.
-    Detects scanned PDFs and notifies user if OCR is required.
-    """
-    print("Converting PDF to Word...")
-    try:
-        # Validate file
-        validator.validate_and_sanitize(file)
-        
-        # Read the uploaded PDF file into memory
-        pdf_stream = io.BytesIO(await file.read())
-        
-        # Check if PDF is scanned
-        if is_scanned_pdf(pdf_stream):
-            raise HTTPException(
-                status_code=400,
-                detail="This PDF appears to be scanned or image-based. OCR processing is required for text extraction. Please use the OCR feature first."
-            )
-        
-        # Reset stream position after scanned check
-        pdf_stream.seek(0)
-        
-        # Convert PDF to Word
-        docx_stream = pdf_to_word(pdf_stream)
-        
-        # Generate output filename
-        original_name = file.filename.rsplit('.', 1)[0]
-        output_filename = f"{original_name}Dpdfpdf_to_word.docx"
-        
-        # Return the converted DOCX file
-        return StreamingResponse(
-            docx_stream,
-            media_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-            headers={"Content-Disposition": f"attachment; filename={output_filename}"}
-        )
-    except HTTPException:
-        raise
-    except Exception as e:
-        print(e)
-        raise HTTPException(status_code=500, detail=f"Error converting PDF to Word: {str(e)}")
+# PDF to Word conversion endpoint disabled to reduce deployment size
+# @app.post("/pdf_to_word")
+# @limiter.limit(f"{config.RATE_LIMIT_PER_MINUTE}/minute")
+# async def pdf_to_word_endpoint(request: Request, file: UploadFile = File(...)):
+#     """
+#     Convert PDF to Word (DOCX) format.
+#     Preserves text formatting, images, and table structures.
+#     Detects scanned PDFs and notifies user if OCR is required.
+#     """
+#     print("Converting PDF to Word...")
+#     try:
+#         # Validate file
+#         validator.validate_and_sanitize(file)
+#         
+#         # Read the uploaded PDF file into memory
+#         pdf_stream = io.BytesIO(await file.read())
+#         
+#         # Check if PDF is scanned
+#         if is_scanned_pdf(pdf_stream):
+#             raise HTTPException(
+#                 status_code=400,
+#                 detail="This PDF appears to be scanned or image-based. OCR processing is required for text extraction. Please use the OCR feature first."
+#             )
+#         
+#         # Reset stream position after scanned check
+#         pdf_stream.seek(0)
+#         
+#         # Convert PDF to Word
+#         docx_stream = pdf_to_word(pdf_stream)
+#         
+#         # Generate output filename
+#         original_name = file.filename.rsplit('.', 1)[0]
+#         output_filename = f"{original_name}Dpdfpdf_to_word.docx"
+#         
+#         # Return the converted DOCX file
+#         return StreamingResponse(
+#             docx_stream,
+#             media_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+#             headers={"Content-Disposition": f"attachment; filename={output_filename}"}
+#         )
+#     except HTTPException:
+#         raise
+#     except Exception as e:
+#         print(e)
+#         raise HTTPException(status_code=500, detail=f"Error converting PDF to Word: {str(e)}")
 
 
 

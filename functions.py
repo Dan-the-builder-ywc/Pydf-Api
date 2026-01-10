@@ -16,7 +16,7 @@ from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 from reportlab.lib.utils import ImageReader
 import openpyxl
-from pdf2docx import Converter
+# from pdf2docx import Converter  # Removed to reduce deployment size
 import os
 
 position_map = {
@@ -824,50 +824,51 @@ def is_scanned_pdf(pdf_stream: io.BytesIO) -> bool:
         return False
 
 
-def pdf_to_word(pdf_stream: io.BytesIO) -> io.BytesIO:
-    """
-    Convert PDF to DOCX format with text, image, and table preservation.
-    
-    Args:
-        pdf_stream: PDF file as BytesIO
-    
-    Returns:
-        DOCX file as BytesIO
-    """
-    try:
-        pdf_stream.seek(0)
-        
-        # Create temporary files for conversion
-        with tempfile.NamedTemporaryFile(delete=False, suffix='.pdf') as temp_pdf:
-            temp_pdf.write(pdf_stream.read())
-            temp_pdf_path = temp_pdf.name
-        
-        with tempfile.NamedTemporaryFile(delete=False, suffix='.docx') as temp_docx:
-            temp_docx_path = temp_docx.name
-        
-        try:
-            # Convert PDF to DOCX using pdf2docx
-            cv = Converter(temp_pdf_path)
-            cv.convert(temp_docx_path, start=0, end=None)
-            cv.close()
-            
-            # Read the converted DOCX file
-            with open(temp_docx_path, 'rb') as docx_file:
-                docx_bytes = io.BytesIO(docx_file.read())
-            
-            docx_bytes.seek(0)
-            return docx_bytes
-            
-        finally:
-            # Clean up temporary files
-            if os.path.exists(temp_pdf_path):
-                os.unlink(temp_pdf_path)
-            if os.path.exists(temp_docx_path):
-                os.unlink(temp_docx_path)
-    
-    except Exception as e:
-        print(f"Error converting PDF to Word: {e}")
-        raise e
+# PDF to Word conversion disabled to reduce deployment size (requires pdf2docx which is 100MB+)
+# def pdf_to_word(pdf_stream: io.BytesIO) -> io.BytesIO:
+#     """
+#     Convert PDF to DOCX format with text, image, and table preservation.
+#     
+#     Args:
+#         pdf_stream: PDF file as BytesIO
+#     
+#     Returns:
+#         DOCX file as BytesIO
+#     """
+#     try:
+#         pdf_stream.seek(0)
+#         
+#         # Create temporary files for conversion
+#         with tempfile.NamedTemporaryFile(delete=False, suffix='.pdf') as temp_pdf:
+#             temp_pdf.write(pdf_stream.read())
+#             temp_pdf_path = temp_pdf.name
+#         
+#         with tempfile.NamedTemporaryFile(delete=False, suffix='.docx') as temp_docx:
+#             temp_docx_path = temp_docx.name
+#         
+#         try:
+#             # Convert PDF to DOCX using pdf2docx
+#             cv = Converter(temp_pdf_path)
+#             cv.convert(temp_docx_path, start=0, end=None)
+#             cv.close()
+#             
+#             # Read the converted DOCX file
+#             with open(temp_docx_path, 'rb') as docx_file:
+#                 docx_bytes = io.BytesIO(docx_file.read())
+#             
+#             docx_bytes.seek(0)
+#             return docx_bytes
+#             
+#         finally:
+#             # Clean up temporary files
+#             if os.path.exists(temp_pdf_path):
+#                 os.unlink(temp_pdf_path)
+#             if os.path.exists(temp_docx_path):
+#                 os.unlink(temp_docx_path)
+#     
+#     except Exception as e:
+#         print(f"Error converting PDF to Word: {e}")
+#         raise e
 
 
 # ============================================================================
