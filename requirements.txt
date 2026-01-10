@@ -1,10 +1,10 @@
-fastapi==0.68.0        # Use a version compatible with Python 3.9
+fastapi==0.104.1       # Modern FastAPI with Python 3.12 support
 PyMuPDF==1.23.8        # Modern version with pre-built wheels
-pydantic==1.8.2        # Older but stable version for Python 3.9
+pydantic==2.5.0        # Pydantic v2 compatible with Python 3.12
 pillow==10.0.0         # Updated Pillow for better compatibility
 python-docx==0.8.11    # Use a compatible version
 reportlab==4.0.7       # Updated ReportLab with Python 3.12 support
 openpyxl==3.1.5
-python-multipart==0.0.5
-python-dotenv==0.19.2  # For environment variable management
-uvicorn==0.15.0        # ASGI server
+python-multipart==0.0.6
+python-dotenv==1.0.0   # For environment variable management
+uvicorn==0.24.0        # Updated ASGI server
