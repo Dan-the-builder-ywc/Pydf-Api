@@ -9,7 +9,6 @@ from fastapi import UploadFile
 import io
 from typing import Tuple,Union,Optional
 import zipfile
-import pypandoc
 import tempfile
 from PIL import Image
 from docx import Document

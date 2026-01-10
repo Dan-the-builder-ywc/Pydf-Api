@@ -2,9 +2,11 @@ fastapi==0.104.1       # Modern FastAPI with Python 3.12 support
 PyMuPDF==1.23.8        # Modern version with pre-built wheels
 pydantic==2.5.0        # Pydantic v2 compatible with Python 3.12
 pillow==10.0.0         # Updated Pillow for better compatibility
-python-docx==0.8.11    # Use a compatible version
+numpy==1.26.2          # NumPy for image analysis
+python-docx==1.1.0     # For Word document handling
 reportlab==4.0.7       # Updated ReportLab with Python 3.12 support
-openpyxl==3.1.5
+openpyxl==3.1.5        # Excel file handling
 python-multipart==0.0.6
 python-dotenv==1.0.0   # For environment variable management
 uvicorn==0.24.0        # Updated ASGI server
+pdf2docx==0.5.8        # For PDF to Word conversion
