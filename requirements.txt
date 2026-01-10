@@ -3,7 +3,7 @@ PyMuPDF==1.23.8        # Modern version with pre-built wheels
 pydantic==1.8.2        # Older but stable version for Python 3.9
 pillow==10.0.0         # Updated Pillow for better compatibility
 python-docx==0.8.11    # Use a compatible version
-reportlab==3.5.67      # ReportLab 3.5.x is compatible with Python 3.9
+reportlab==4.0.7       # Updated ReportLab with Python 3.12 support
 openpyxl==3.1.5
 python-multipart==0.0.5
 python-dotenv==0.19.2  # For environment variable management
